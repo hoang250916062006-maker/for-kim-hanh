@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 For Kim Hạnh 💖</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: radial-gradient(circle at top, #ffe6f0, #ffb3d9);
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: background 1s ease-in-out;
+  }
+
+  /* --- Trang mèo --- */
+  .intro {
+    text-align: center;
+    transition: opacity 1s ease;
+  }
+  .intro img.cat {
+    width: 180px;
+    height: auto;
+    animation: bounce 2s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 20px rgba(255, 0, 150, 0.4));
+  }
+  @keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-25px); }
+  }
+  .intro h2 {
+    color: #ff3385;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    text-shadow: 0 0 10px #ff66b2;
+  }
+  .intro button {
+    margin-top: 25px;
+    padding: 12px 28px 12px 40px;
+    background: linear-gradient(45deg, #ff66b2, #ff3399);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 51, 153, 0.6);
+    transition: transform 0.2s, box-shadow 0.3s;
+    position: relative;
+  }
+  .intro button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255, 51, 153, 0.9);
+  }
+
+  /* Con mèo nhỏ dính vào nút */
+  .button-cat {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    animation: catWave 2s infinite ease-in-out alternate;
+  }
+  @keyframes catWave {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-60%) rotate(-10deg); }
+  }
+
+  /* --- Trang slideshow --- */
+  .slideshow {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at top, #2b0018, #000);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .message {
+    position: fixed;
+    top: 3vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ff99cc;
+    text-shadow: 0 0 10px #ff1a8c, 0 0 20px #ff4da6;
+    z-index: 3;
+    line-height: 1.5em;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  @keyframes glow {
+    from { text-shadow: 0 0 15px #ff4da6, 0 0 30px #ff1a8c; }
+    to { text-shadow: 0 0 30px #ff99cc, 0 0 50px #ff3399; }
+  }
+
+  .slideshow-container {
+    position: relative;
+    width: 80vw;
+    max-width: 360px;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 0, 120, 0.8);
+    z-index: 2;
+  }
+
+  /* Ảnh fade lần lượt */
+  .slides img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    opacity: 0;
+    animation: fadeShow 16s infinite, float 4s ease-in-out infinite alternate;
+  }
+
+  .slides img:nth-child(1) { animation-delay: 0s, 0s; }
+  .slides img:nth-child(2) { animation-delay: 4s, 1s; }
+  .slides img:nth-child(3) { animation-delay: 8s, 2s; }
+  .slides img:nth-child(4) { animation-delay: 12s, 3s; }
+
+  /* Ảnh bay nhẹ lên xuống */
+  @keyframes float {
+    from { transform: translateY(0px) scale(1); }
+    to { transform: translateY(-8px) scale(1.01); }
+  }
+
+  /* Hiện lần lượt từng ảnh */
+  @keyframes fadeShow {
+    0%   { opacity: 0; }
+    5%   { opacity: 1; }
+    25%  { opacity: 1; }
+    30%  { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  .heart {
+    position: fixed;
+    color: #ff3366;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+  @keyframes floatUp {
+    from { transform: translateY(100vh) scale(0.8); opacity: 1; }
+    to { transform: translateY(-10vh) scale(1.4); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Trang mèo -->
+  <div class="intro" id="intro">
+    <img class="cat" src="https://i.postimg.cc/zfxRPwk2/527753520-765184479794096-6650852164368854962-n.jpg" alt="Cute Cat">
+    <h2>💞 Nếu là <b>Kim Hạnh</b> thì bấm vào nha 💕</h2>
+    <button onclick="startLove()">
+      <img class="button-cat" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Cat Icon">
+      Bấm vào đây 💖
+    </button>
+  </div>
+
+  <!-- Trang slideshow -->
+  <div class="slideshow" id="slideshow">
+    <div class="message">💖 Chúc em bé ngày 20/10 thật hạnh phúc, luôn vui vẻ và đừng rời xa anh nha mặc dù trong khoảng thời gian này đã khiến em hoàn toàn thất vọng về anh, anh nhận ra rằng nếu không có em anh chẳng là gì cả. Anh yêu em nhiều nhắm íiiii ...nghèo ảnh gòi 💐</div>
+    <div class="slideshow-container">
+      <div class="slides">
+        <img src="https://i.postimg.cc/gJbWvQCq/566612145-1207255041240585-1699932078934719112-n.jpg">
+        <img src="https://i.postimg.cc/nzMQ8sdR/566623289-4683715528521866-4370073929695232697-n.jpg">
+        <img src="https://i.postimg.cc/Y9jmc4XD/565412047-847230134920532-302391214807464588-n.jpg">
+        <img src="https://i.postimg.cc/0QrJg6tZ/566523804-1502146614402975-6848818714235198016-n.jpg">
+      </div>
+    </div>
+  </div>
+
+<script>
+  function startLove() {
+    const intro = document.getElementById('intro');
+    const slide = document.getElementById('slideshow');
+    intro.style.opacity = 0;
+    setTimeout(() => {
+      intro.style.display = 'none';
+      document.body.style.background = '#000';
+      slide.style.display = 'flex';
+    }, 800);
+  }
+
+  // Tim bay 💗
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = ["❤️","💖","💘","💝"][Math.floor(Math.random() * 4)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 40) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 400);
+</script>
+</body>
+</html>
